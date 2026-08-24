@@ -1,33 +1,28 @@
-
 /* =========================================================
-   MITTI MANOR — FIREBASE.JS
-   Firebase Authentication Setup
+   MITTI MANOR
+   FIREBASE AUTHENTICATION
 ========================================================= */
 
 "use strict";
 
 
 /* =========================================================
-   FIREBASE IMPORTS
-   Firebase v12 Modular SDK
+   FIREBASE SDK
 ========================================================= */
 
 import {
     initializeApp
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
+
 import {
     getAuth,
     onAuthStateChanged,
-
     signInWithEmailAndPassword,
     createUserWithEmailAndPassword,
-
     signOut,
-
     RecaptchaVerifier,
     signInWithPhoneNumber,
-
     updateProfile
 } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
@@ -36,24 +31,28 @@ import {
    FIREBASE CONFIG
 ========================================================= */
 
-/*
-   Firebase Console se ye values copy karke
-   neeche paste karna hai.
-*/
-
 const firebaseConfig = {
 
-    apiKey: "YOUR_API_KEY",
+    apiKey:
+        "AIzaSyDBuaqeGPJRcKNjND69-E3W_g3gta3LpW4",
 
-    authDomain: "YOUR_PROJECT.firebaseapp.com",
+    authDomain:
+        "mitti-manor.firebaseapp.com",
 
-    projectId: "YOUR_PROJECT_ID",
+    projectId:
+        "mitti-manor",
 
-    storageBucket: "YOUR_PROJECT.firebasestorage.app",
+    storageBucket:
+        "mitti-manor.firebasestorage.app",
 
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    messagingSenderId:
+        "321272334348",
 
-    appId: "YOUR_APP_ID"
+    appId:
+        "1:321272334348:web:4ee71f475f0b586f2e4629",
+
+    measurementId:
+        "G-K9H53GTB1Q"
 
 };
 
@@ -67,7 +66,7 @@ const firebaseApp =
 
 
 /* =========================================================
-   AUTH
+   FIREBASE AUTH
 ========================================================= */
 
 const auth =
@@ -81,17 +80,28 @@ const auth =
 let currentUser = null;
 
 
-onAuthStateChanged(auth, user => {
+onAuthStateChanged(
+    auth,
+    (user) => {
 
-    currentUser = user || null;
+        currentUser = user || null;
 
 
-    if (user) {
+        if (user) {
 
-        console.log(
-            "MITTI MANOR User Logged In:",
-            user.uid
-        );
+            console.log(
+                "MITTI MANOR: User logged in",
+                user.uid
+            );
+
+        } else {
+
+            console.log(
+                "MITTI MANOR: User logged out"
+            );
+
+        }
+
 
         document.dispatchEvent(
             new CustomEvent(
@@ -104,26 +114,8 @@ onAuthStateChanged(auth, user => {
             )
         );
 
-    } else {
-
-        console.log(
-            "MITTI MANOR User Logged Out"
-        );
-
-        document.dispatchEvent(
-            new CustomEvent(
-                "mittiManorAuthChanged",
-                {
-                    detail: {
-                        user: null
-                    }
-                }
-            )
-        );
-
     }
-
-});
+);
 
 
 /* =========================================================
@@ -151,7 +143,8 @@ async function signUpWithEmail(
             await updateProfile(
                 result.user,
                 {
-                    displayName: displayName
+                    displayName:
+                        displayName
                 }
             );
 
@@ -159,22 +152,30 @@ async function signUpWithEmail(
 
 
         return {
+
             success: true,
-            user: result.user
+
+            user:
+                result.user
+
         };
 
 
     } catch (error) {
 
         console.error(
-            "Email signup error:",
+            "MITTI MANOR signup error:",
             error
         );
 
 
         return {
+
             success: false,
-            error: getFirebaseErrorMessage(error)
+
+            error:
+                getFirebaseErrorMessage(error)
+
         };
 
     }
@@ -202,22 +203,30 @@ async function loginWithEmail(
 
 
         return {
+
             success: true,
-            user: result.user
+
+            user:
+                result.user
+
         };
 
 
     } catch (error) {
 
         console.error(
-            "Email login error:",
+            "MITTI MANOR email login error:",
             error
         );
 
 
         return {
+
             success: false,
-            error: getFirebaseErrorMessage(error)
+
+            error:
+                getFirebaseErrorMessage(error)
+
         };
 
     }
@@ -232,6 +241,10 @@ async function loginWithEmail(
 let phoneRecaptcha = null;
 
 
+/* =========================================================
+   CREATE RECAPTCHA
+========================================================= */
+
 function setupPhoneRecaptcha(
     containerId = "recaptcha-container"
 ) {
@@ -239,7 +252,9 @@ function setupPhoneRecaptcha(
     try {
 
         if (phoneRecaptcha) {
+
             return phoneRecaptcha;
+
         }
 
 
@@ -248,23 +263,30 @@ function setupPhoneRecaptcha(
                 auth,
                 containerId,
                 {
-                    size: "invisible",
 
-                    callback: () => {
+                    size:
+                        "invisible",
 
-                        console.log(
-                            "reCAPTCHA verified."
-                        );
 
-                    },
+                    callback:
+                        () => {
 
-                    "expired-callback": () => {
+                            console.log(
+                                "MITTI MANOR: reCAPTCHA verified"
+                            );
 
-                        console.log(
-                            "reCAPTCHA expired."
-                        );
+                        },
 
-                    }
+
+                    "expired-callback":
+                        () => {
+
+                            console.log(
+                                "MITTI MANOR: reCAPTCHA expired"
+                            );
+
+                        }
+
                 }
             );
 
@@ -275,9 +297,14 @@ function setupPhoneRecaptcha(
     } catch (error) {
 
         console.error(
-            "reCAPTCHA setup error:",
+            "MITTI MANOR reCAPTCHA error:",
             error
         );
+
+
+        phoneRecaptcha =
+            null;
+
 
         return null;
 
@@ -292,18 +319,35 @@ function setupPhoneRecaptcha(
 
 async function sendPhoneOTP(
     phoneNumber,
-    recaptchaContainerId = "recaptcha-container"
+    recaptchaContainerId =
+        "recaptcha-container"
 ) {
 
     try {
 
+        if (!phoneNumber) {
+
+            return {
+
+                success: false,
+
+                error:
+                    "Please enter your phone number."
+
+            };
+
+        }
+
+
         /*
-           Phone number format:
+         IMPORTANT:
 
-           +919876543210
+         Number must contain country code.
 
-           Country code is required.
+         Example:
+         +919876543210
         */
+
 
         const verifier =
             setupPhoneRecaptcha(
@@ -314,8 +358,12 @@ async function sendPhoneOTP(
         if (!verifier) {
 
             return {
+
                 success: false,
-                error: "reCAPTCHA could not be initialized."
+
+                error:
+                    "reCAPTCHA could not be initialized."
+
             };
 
         }
@@ -329,47 +377,50 @@ async function sendPhoneOTP(
             );
 
 
-        /*
-           Save confirmation result temporarily.
-           It will be used when user enters OTP.
-        */
-
         window.MittiManorPhoneConfirmation =
             confirmationResult;
 
 
         return {
+
             success: true
+
         };
 
 
     } catch (error) {
 
         console.error(
-            "Phone OTP error:",
+            "MITTI MANOR OTP error:",
             error
         );
 
 
         /*
-           If reCAPTCHA becomes invalid,
-           recreate it next time.
+         Reset reCAPTCHA
         */
 
         if (phoneRecaptcha) {
 
             try {
+
                 await phoneRecaptcha.clear();
+
             } catch (_) {}
 
-            phoneRecaptcha = null;
+            phoneRecaptcha =
+                null;
 
         }
 
 
         return {
+
             success: false,
-            error: getFirebaseErrorMessage(error)
+
+            error:
+                getFirebaseErrorMessage(error)
+
         };
 
     }
@@ -394,9 +445,26 @@ async function verifyPhoneOTP(
         if (!confirmationResult) {
 
             return {
+
                 success: false,
+
                 error:
                     "Please request a new OTP first."
+
+            };
+
+        }
+
+
+        if (!otp || otp.length !== 6) {
+
+            return {
+
+                success: false,
+
+                error:
+                    "Please enter the 6-digit OTP."
+
             };
 
         }
@@ -413,22 +481,30 @@ async function verifyPhoneOTP(
 
 
         return {
+
             success: true,
-            user: result.user
+
+            user:
+                result.user
+
         };
 
 
     } catch (error) {
 
         console.error(
-            "OTP verification error:",
+            "MITTI MANOR OTP verification error:",
             error
         );
 
 
         return {
+
             success: false,
-            error: getFirebaseErrorMessage(error)
+
+            error:
+                getFirebaseErrorMessage(error)
+
         };
 
     }
@@ -446,22 +522,29 @@ async function logoutUser() {
 
         await signOut(auth);
 
+
         return {
+
             success: true
+
         };
 
 
     } catch (error) {
 
         console.error(
-            "Logout error:",
+            "MITTI MANOR logout error:",
             error
         );
 
 
         return {
+
             success: false,
-            error: getFirebaseErrorMessage(error)
+
+            error:
+                getFirebaseErrorMessage(error)
+
         };
 
     }
@@ -481,13 +564,17 @@ function getCurrentUser() {
 
 
 /* =========================================================
-   FIREBASE ERROR TRANSLATOR
+   FIREBASE ERROR MESSAGES
 ========================================================= */
 
-function getFirebaseErrorMessage(error) {
+function getFirebaseErrorMessage(
+    error
+) {
 
     if (!error) {
+
         return "Something went wrong.";
+
     }
 
 
@@ -497,50 +584,70 @@ function getFirebaseErrorMessage(error) {
 
     const messages = {
 
+
         "auth/invalid-email":
             "Please enter a valid email address.",
+
 
         "auth/user-not-found":
             "No account found with this email.",
 
+
         "auth/wrong-password":
             "Incorrect password.",
+
 
         "auth/invalid-credential":
             "Email or password is incorrect.",
 
+
         "auth/email-already-in-use":
             "This email is already registered.",
+
 
         "auth/weak-password":
             "Password should be at least 6 characters.",
 
+
         "auth/too-many-requests":
             "Too many attempts. Please try again later.",
+
 
         "auth/invalid-phone-number":
             "Please enter a valid phone number.",
 
+
         "auth/missing-phone-number":
             "Please enter your phone number.",
+
 
         "auth/quota-exceeded":
             "OTP limit reached. Please try again later.",
 
+
         "auth/invalid-verification-code":
             "Incorrect OTP.",
+
 
         "auth/code-expired":
             "OTP has expired. Please request a new OTP.",
 
+
         "auth/session-expired":
             "Session expired. Please request a new OTP.",
+
 
         "auth/captcha-check-failed":
             "reCAPTCHA verification failed.",
 
+
         "auth/network-request-failed":
-            "Network error. Please check your internet connection."
+            "Network error. Please check your internet connection.",
+
+
+        "auth/operation-not-allowed":
+            "This login method is not enabled in Firebase."
+
 
     };
 
@@ -555,32 +662,45 @@ function getFirebaseErrorMessage(error) {
 
 
 /* =========================================================
-   GLOBAL MITTI MANOR FIREBASE OBJECT
+   GLOBAL MITTI MANOR FIREBASE API
 ========================================================= */
 
 window.MittiManorFirebase = {
 
-    app: firebaseApp,
+    app:
+        firebaseApp,
 
-    auth: auth,
+    auth:
+        auth,
 
-    getCurrentUser,
+    getCurrentUser:
+        getCurrentUser,
 
-    signUpWithEmail,
+    signUpWithEmail:
+        signUpWithEmail,
 
-    loginWithEmail,
+    loginWithEmail:
+        loginWithEmail,
 
-    sendPhoneOTP,
+    sendPhoneOTP:
+        sendPhoneOTP,
 
-    verifyPhoneOTP,
+    verifyPhoneOTP:
+        verifyPhoneOTP,
 
-    logoutUser,
+    logoutUser:
+        logoutUser,
 
-    setupPhoneRecaptcha
+    setupPhoneRecaptcha:
+        setupPhoneRecaptcha
 
 };
 
 
+/* =========================================================
+   READY
+========================================================= */
+
 console.log(
-    "MITTI MANOR Firebase initialized."
+    "🔥 MITTI MANOR Firebase initialized successfully."
 );
