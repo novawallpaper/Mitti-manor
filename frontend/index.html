@@ -1,1 +1,1002 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+    >
+
+    <meta
+        name="theme-color"
+        content="#ffffff"
+    >
+
+    <meta
+        name="description"
+        content="MITTI MANOR — Premium B2B wholesale marketplace."
+    >
+
+    <title>MITTI MANOR — Premium Wholesale</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet"
+    >
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body>
+
+    <!-- =========================================================
+         APP LOADER
+    ========================================================== -->
+
+    <div id="app-loader" class="app-loader" aria-hidden="true">
+        <div class="loader-brand">MITTI MANOR</div>
+        <div class="loader-line"></div>
+    </div>
+
+
+    <!-- =========================================================
+         APP
+    ========================================================== -->
+
+    <div id="app" class="app">
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <header class="site-header">
+
+            <div class="header-main">
+
+                <!-- Menu -->
+                <button
+                    class="icon-btn menu-btn"
+                    id="menu-btn"
+                    type="button"
+                    aria-label="Open menu"
+                    aria-controls="side-menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+
+
+                <!-- Brand -->
+                <a
+                    href="#home"
+                    class="brand"
+                    aria-label="MITTI MANOR Home"
+                >
+                    <span class="brand-name">MITTI MANOR</span>
+                    <span class="brand-tagline">WHOLESALE</span>
+                </a>
+
+
+                <!-- Header Actions -->
+                <div class="header-actions">
+
+                    <!-- Search -->
+                    <button
+                        class="header-action"
+                        id="search-btn"
+                        type="button"
+                        aria-label="Search"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <circle cx="11" cy="11" r="6.5"></circle>
+                            <path d="M16 16L21 21"></path>
+                        </svg>
+                    </button>
+
+
+                    <!-- Wishlist -->
+                    <button
+                        class="header-action"
+                        id="wishlist-btn"
+                        type="button"
+                        aria-label="Wishlist"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M20.8 8.7c0 5.5-8.8 10.4-8.8 10.4S3.2 14.2 3.2 8.7C3.2 5.6 5.4 3.5 8.2 3.5c1.6 0 3.1.8 3.8 2 0.7-1.2 2.2-2 3.8-2 2.8 0 5 2.1 5 5.2Z"
+                            ></path>
+                        </svg>
+                    </button>
+
+
+                    <!-- Cart -->
+                    <button
+                        class="header-action cart-action"
+                        id="cart-btn"
+                        type="button"
+                        aria-label="Shopping cart"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <path d="M3 4h2l2.2 10.3a2 2 0 0 0 2 1.6h7.9a2 2 0 0 0 1.9-1.4L21 8H6"></path>
+                            <circle cx="10" cy="20" r="1.3"></circle>
+                            <circle cx="18" cy="20" r="1.3"></circle>
+                        </svg>
+
+                        <span
+                            class="cart-badge"
+                            id="cart-badge"
+                            hidden
+                        >
+                            0
+                        </span>
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Search Bar -->
+            <div
+                class="search-panel"
+                id="search-panel"
+                hidden
+            >
+
+                <form
+                    class="search-form"
+                    id="search-form"
+                >
+
+                    <div class="search-input-wrap">
+
+                        <svg
+                            viewBox="0 0 24 24"
+                            aria-hidden="true"
+                        >
+                            <circle cx="11" cy="11" r="6.5"></circle>
+                            <path d="M16 16L21 21"></path>
+                        </svg>
+
+                        <input
+                            id="search-input"
+                            name="search"
+                            type="search"
+                            placeholder="Search products, categories..."
+                            autocomplete="off"
+                            enterkeyhint="search"
+                        >
+
+                        <button
+                            type="button"
+                            id="clear-search"
+                            class="search-clear"
+                            aria-label="Clear search"
+                        >
+                            ×
+                        </button>
+
+                    </div>
+
+                </form>
+
+
+                <!-- Search Suggestions -->
+                <div
+                    class="search-suggestions"
+                    id="search-suggestions"
+                    hidden
+                ></div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =====================================================
+             SIDE MENU
+        ====================================================== -->
+
+        <div
+            class="menu-overlay"
+            id="menu-overlay"
+            hidden
+        ></div>
+
+
+        <aside
+            class="side-menu"
+            id="side-menu"
+            aria-hidden="true"
+        >
+
+            <div class="side-menu-header">
+
+                <div>
+                    <span class="side-menu-label">WELCOME TO</span>
+                    <strong>MITTI MANOR</strong>
+                </div>
+
+                <button
+                    class="icon-btn close-menu-btn"
+                    id="close-menu-btn"
+                    type="button"
+                    aria-label="Close menu"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <nav class="side-navigation">
+
+                <a href="#home" class="side-link">
+                    <span>Home</span>
+                </a>
+
+                <a href="#categories" class="side-link">
+                    <span>Categories</span>
+                </a>
+
+                <a href="#products" class="side-link">
+                    <span>Products</span>
+                </a>
+
+                <a href="#orders" class="side-link">
+                    <span>My Orders</span>
+                </a>
+
+                <a href="#wishlist" class="side-link">
+                    <span>Wishlist</span>
+                </a>
+
+                <a href="#profile" class="side-link">
+                    <span>My Profile</span>
+                </a>
+
+            </nav>
+
+
+            <div class="side-menu-footer">
+                <p>Premium B2B Wholesale</p>
+                <small>MITTI MANOR</small>
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             MAIN CONTENT
+        ====================================================== -->
+
+        <main id="main-content">
+
+            <!-- =================================================
+                 HOME
+            ================================================== -->
+
+            <section
+                id="home"
+                class="page-section home-section"
+            >
+
+                <!-- Hero -->
+                <section class="hero-section">
+
+                    <div class="hero-content">
+
+                        <span class="hero-eyebrow">
+                            PREMIUM B2B WHOLESALE
+                        </span>
+
+                        <h1>
+                            Quality products.<br>
+                            <em>Better business.</em>
+                        </h1>
+
+                        <p>
+                            Premium wholesale products for shops,
+                            retailers and growing businesses.
+                        </p>
+
+                        <div class="hero-actions">
+
+                            <a
+                                href="#products"
+                                class="primary-btn"
+                            >
+                                Shop Wholesale
+                            </a>
+
+                            <a
+                                href="#categories"
+                                class="secondary-btn"
+                            >
+                                Explore Categories
+                            </a>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="hero-visual">
+
+                        <div class="hero-shape hero-shape-one"></div>
+                        <div class="hero-shape hero-shape-two"></div>
+
+                        <div class="hero-card">
+
+                            <span>MITTI MANOR</span>
+
+                            <strong>
+                                PREMIUM
+                                <br>
+                                WHOLESALE
+                            </strong>
+
+                            <small>
+                                Built for businesses
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     QUICK FEATURES
+                ================================================== -->
+
+                <section class="quick-features">
+
+                    <div class="feature-item">
+                        <span class="feature-icon">✓</span>
+                        <div>
+                            <strong>Quality First</strong>
+                            <span>Business-ready products</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">◆</span>
+                        <div>
+                            <strong>Wholesale Pricing</strong>
+                            <span>Made for retailers</span>
+                        </div>
+                    </div>
+
+                    <div class="feature-item">
+                        <span class="feature-icon">↗</span>
+                        <div>
+                            <strong>Fast Delivery</strong>
+                            <span>Reliable order handling</span>
+                        </div>
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     CATEGORIES
+                ================================================== -->
+
+                <section
+                    id="categories"
+                    class="content-section"
+                >
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-eyebrow">
+                                EXPLORE
+                            </span>
+
+                            <h2>Shop by Category</h2>
+                        </div>
+
+                        <a
+                            href="#categories"
+                            class="text-link"
+                        >
+                            View all
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="category-grid"
+                        id="category-grid"
+                    >
+
+                        <!-- Categories will be loaded dynamically -->
+
+                        <article class="category-card">
+                            <div class="category-image placeholder-image">
+                                <span>01</span>
+                            </div>
+
+                            <div class="category-info">
+                                <h3>Featured</h3>
+                                <span>Explore collection</span>
+                            </div>
+                        </article>
+
+
+                        <article class="category-card">
+                            <div class="category-image placeholder-image">
+                                <span>02</span>
+                            </div>
+
+                            <div class="category-info">
+                                <h3>New Arrivals</h3>
+                                <span>Latest products</span>
+                            </div>
+                        </article>
+
+
+                        <article class="category-card">
+                            <div class="category-image placeholder-image">
+                                <span>03</span>
+                            </div>
+
+                            <div class="category-info">
+                                <h3>Best Sellers</h3>
+                                <span>Popular choices</span>
+                            </div>
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     BEST SELLERS
+                ================================================== -->
+
+                <section
+                    id="products"
+                    class="content-section"
+                >
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-eyebrow">
+                                SHOP
+                            </span>
+
+                            <h2>Best Sellers</h2>
+                        </div>
+
+                        <a
+                            href="#products"
+                            class="text-link"
+                        >
+                            View all
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="product-grid"
+                        id="product-grid"
+                    >
+
+                        <!-- Dynamic products will appear here -->
+
+                        <article class="product-card skeleton-card">
+
+                            <div class="product-image placeholder-image">
+                                <span>PRODUCT</span>
+                            </div>
+
+                            <div class="product-info">
+
+                                <span class="product-category">
+                                    MITTI MANOR
+                                </span>
+
+                                <h3>
+                                    Product coming soon
+                                </h3>
+
+                                <div class="product-bottom">
+
+                                    <strong>
+                                        ₹0.00
+                                    </strong>
+
+                                    <button
+                                        type="button"
+                                        class="add-cart-btn"
+                                        disabled
+                                    >
+                                        Add
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     NEW ARRIVALS
+                ================================================== -->
+
+                <section class="content-section">
+
+                    <div class="section-heading">
+
+                        <div>
+                            <span class="section-eyebrow">
+                                NEW
+                            </span>
+
+                            <h2>New Arrivals</h2>
+                        </div>
+
+                        <a
+                            href="#products"
+                            class="text-link"
+                        >
+                            Explore
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="horizontal-products"
+                        id="new-arrivals"
+                    >
+                        <!-- Dynamic content -->
+                    </div>
+
+                </section>
+
+
+                <!-- =================================================
+                     BUSINESS CTA
+                ================================================== -->
+
+                <section class="business-cta">
+
+                    <div class="business-cta-content">
+
+                        <span class="section-eyebrow">
+                            FOR YOUR BUSINESS
+                        </span>
+
+                        <h2>
+                            Built for shops that
+                            <em>mean business.</em>
+                        </h2>
+
+                        <p>
+                            Discover reliable wholesale products
+                            designed for everyday business needs.
+                        </p>
+
+                        <a
+                            href="#products"
+                            class="primary-btn light-btn"
+                        >
+                            Start Shopping
+                        </a>
+
+                    </div>
+
+                </section>
+
+            </section>
+
+
+            <!-- =================================================
+                 ORDERS PAGE PLACEHOLDER
+            ================================================== -->
+
+            <section
+                id="orders"
+                class="page-section"
+                hidden
+            >
+
+                <div class="page-header">
+                    <span class="section-eyebrow">ACCOUNT</span>
+                    <h1>My Orders</h1>
+                    <p>Your order history will appear here.</p>
+                </div>
+
+                <div id="orders-container"></div>
+
+            </section>
+
+
+            <!-- =================================================
+                 WISHLIST PAGE PLACEHOLDER
+            ================================================== -->
+
+            <section
+                id="wishlist"
+                class="page-section"
+                hidden
+            >
+
+                <div class="page-header">
+                    <span class="section-eyebrow">SAVED</span>
+                    <h1>Wishlist</h1>
+                    <p>Your favourite products will appear here.</p>
+                </div>
+
+                <div id="wishlist-container"></div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROFILE PAGE PLACEHOLDER
+            ================================================== -->
+
+            <section
+                id="profile"
+                class="page-section"
+                hidden
+            >
+
+                <div class="page-header">
+                    <span class="section-eyebrow">ACCOUNT</span>
+                    <h1>My Profile</h1>
+                    <p>Manage your MITTI MANOR account.</p>
+                </div>
+
+                <div id="profile-container"></div>
+
+            </section>
+
+        </main>
+
+
+        <!-- =====================================================
+             CART DRAWER
+        ====================================================== -->
+
+        <div
+            class="cart-overlay"
+            id="cart-overlay"
+            hidden
+        ></div>
+
+
+        <aside
+            class="cart-drawer"
+            id="cart-drawer"
+            aria-hidden="true"
+        >
+
+            <div class="drawer-header">
+
+                <div>
+                    <span class="section-eyebrow">YOUR BAG</span>
+                    <h2>Shopping Cart</h2>
+                </div>
+
+                <button
+                    type="button"
+                    class="drawer-close"
+                    id="close-cart-btn"
+                    aria-label="Close cart"
+                >
+                    ×
+                </button>
+
+            </div>
+
+
+            <div
+                class="cart-items"
+                id="cart-items"
+            >
+
+                <div class="empty-state">
+
+                    <div class="empty-icon">🛒</div>
+
+                    <h3>Your cart is empty</h3>
+
+                    <p>
+                        Add products to start your order.
+                    </p>
+
+                    <button
+                        type="button"
+                        class="primary-btn"
+                        id="continue-shopping-btn"
+                    >
+                        Continue Shopping
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <div class="cart-summary">
+
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <strong id="cart-subtotal">₹0</strong>
+                </div>
+
+                <div class="summary-row">
+                    <span>Delivery</span>
+                    <strong id="cart-delivery">₹0</strong>
+                </div>
+
+                <div class="summary-total">
+                    <span>Total</span>
+                    <strong id="cart-total">₹0</strong>
+                </div>
+
+                <button
+                    type="button"
+                    class="checkout-btn"
+                    id="checkout-btn"
+                    disabled
+                >
+                    Proceed to Checkout
+                </button>
+
+            </div>
+
+        </aside>
+
+
+        <!-- =====================================================
+             LOGIN MODAL
+        ====================================================== -->
+
+        <div
+            class="modal-overlay"
+            id="auth-overlay"
+            hidden
+        ></div>
+
+
+        <div
+            class="auth-modal"
+            id="auth-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="auth-title"
+            hidden
+        >
+
+            <button
+                type="button"
+                class="modal-close"
+                id="close-auth-btn"
+                aria-label="Close login"
+            >
+                ×
+            </button>
+
+
+            <div class="auth-header">
+
+                <span class="section-eyebrow">
+                    WELCOME
+                </span>
+
+                <h2 id="auth-title">
+                    Login to MITTI MANOR
+                </h2>
+
+                <p>
+                    Access your orders, cart and account.
+                </p>
+
+            </div>
+
+
+            <div class="auth-methods">
+
+                <!-- Primary -->
+                <button
+                    type="button"
+                    class="auth-method primary-auth-method"
+                    id="phone-login-btn"
+                >
+                    <span class="auth-method-icon">📱</span>
+
+                    <span>
+                        <strong>Continue with Phone OTP</strong>
+                        <small>Fast & secure login</small>
+                    </span>
+                </button>
+
+
+                <!-- Secondary -->
+                <button
+                    type="button"
+                    class="auth-method"
+                    id="email-login-btn"
+                >
+                    <span class="auth-method-icon">✉</span>
+
+                    <span>
+                        <strong>Login with Email & Password</strong>
+                        <small>Use your email account</small>
+                    </span>
+                </button>
+
+            </div>
+
+
+            <p class="auth-note">
+                By continuing, you agree to the MITTI MANOR
+                account terms and privacy policy.
+            </p>
+
+        </div>
+
+
+        <!-- =====================================================
+             TOAST
+        ====================================================== -->
+
+        <div
+            class="toast"
+            id="toast"
+            role="status"
+            aria-live="polite"
+            hidden
+        >
+            <span id="toast-message"></span>
+        </div>
+
+
+        <!-- =====================================================
+             BOTTOM NAVIGATION
+        ====================================================== -->
+
+        <nav
+            class="bottom-navigation"
+            id="bottom-navigation"
+            aria-label="Main navigation"
+        >
+
+            <a
+                href="#home"
+                class="bottom-nav-item active"
+                data-nav="home"
+            >
+
+                <span class="nav-icon home-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M3 10.5 12 3l9 7.5"></path>
+                        <path d="M5.5 9.5V21h13V9.5"></path>
+                        <path d="M9.5 21v-6h5v6"></path>
+                    </svg>
+                </span>
+
+                <span class="nav-label">Home</span>
+
+            </a>
+
+
+            <a
+                href="#categories"
+                class="bottom-nav-item"
+                data-nav="categories"
+            >
+
+                <span class="nav-icon category-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+                        <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+                        <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+                        <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+                    </svg>
+                </span>
+
+                <span class="nav-label">Categories</span>
+
+            </a>
+
+
+            <a
+                href="#orders"
+                class="bottom-nav-item"
+                data-nav="orders"
+            >
+
+                <span class="nav-icon orders-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <path d="M5 7.5 12 4l7 3.5v9L12 20l-7-3.5z"></path>
+                        <path d="M5 7.5 12 11l7-3.5"></path>
+                        <path d="M12 11v9"></path>
+                    </svg>
+                </span>
+
+                <span class="nav-label">Orders</span>
+
+            </a>
+
+
+            <a
+                href="#profile"
+                class="bottom-nav-item"
+                data-nav="profile"
+            >
+
+                <span class="nav-icon profile-icon">
+                    <svg
+                        viewBox="0 0 24 24"
+                        aria-hidden="true"
+                    >
+                        <circle cx="12" cy="12" r="9"></circle>
+                        <circle cx="12" cy="9.5" r="2.5"></circle>
+                        <path d="M7.5 18c.8-2.2 2.3-3.3 4.5-3.3s3.7 1.1 4.5 3.3"></path>
+                    </svg>
+                </span>
+
+                <span class="nav-label">Profile</span>
+
+            </a>
+
+        </nav>
+
+    </div>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script src="js/app.js" defer></script>
+
+</body>
+</html>
